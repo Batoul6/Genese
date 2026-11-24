@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65f4929203838741ac8faf66ecbb1c6, type: 3}
+  m_Name: TestPoisson
+  m_EditorClassIdentifier: Assembly-CSharp::ObjetPoisson
+  nomAffiche: Poisson test
+  description: 'Ce poisson n''existe pas vraiment. '
+  stade: 1
+  regime: 0
+  pvMax: 10
+  degats: 1
+  xpDonnee: 1
+  delaiAttaque: {x: 1, y: 2}
+  temperament: 1
+  distanceDetection: 6
+  vitesse: {x: 1, y: 3}
+  vitesseRotation: 4
+  distanceVoisinage: 2
+  echelle: {x: 0.9, y: 1.1}
+  prefabModele: {fileID: 0}
+  couleurPlaceholder: {r: 1, g: 0.5176471, b: 1, a: 1}
