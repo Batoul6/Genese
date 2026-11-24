@@ -4,7 +4,7 @@ using UnityEngine;
 // Script pour controler le nb de scriptableObjects ReglagesProgression pcq on en veut juste 1 a la fois
 public static class MenuReglagesProgression
 {
-    const string dossier = "Assets/ScriptableObjects/Editeur";
+    const string dossier = "Assets/ScriptableObjects/Reglages";
     const string chemin = dossier + "/ReglagesProgression.asset";
 
     [MenuItem("Assets/Create/Genese/Progression/Reglages Progression", false, 0)]
@@ -25,7 +25,7 @@ public static class MenuReglagesProgression
         else
         {
             if (!AssetDatabase.IsValidFolder(dossier))
-                AssetDatabase.CreateFolder("Assets/ScriptableObjects", "Editeur");
+                AssetDatabase.CreateFolder("Assets/ScriptableObjects", "Reglages");
 
             reglages = ScriptableObject.CreateInstance<ReglagesProgression>();
             AssetDatabase.CreateAsset(reglages, chemin);
