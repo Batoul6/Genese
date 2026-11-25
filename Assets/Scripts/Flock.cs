@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Jobs;
 using Unity.Collections;
@@ -85,8 +83,8 @@ public class Flock : MonoBehaviour
 		_cohesionWeight = UnityEngine.Random.Range(1f, 10f);
 		_aligementWeight = UnityEngine.Random.Range(1f, 10f);
 		_avoidanceWeight = UnityEngine.Random.Range(1f, 10f);
-		_minSpeed = UnityEngine.Random.Range(1f, 2f);
-		_maxSpeed = UnityEngine.Random.Range(2f, 4f);
+		_minSpeed = UnityEngine.Random.Range(0f, 1f);
+		_maxSpeed = UnityEngine.Random.Range(1f, 3f);
 	}
 
 	private void Update()
@@ -165,14 +163,16 @@ public class Flock : MonoBehaviour
 	private void GenerateUnits()
 	{
 		allUnits = new FlockUnit[flockSize];
-		flockUnitPrefab = avaliableflockUnitPrefabs[UnityEngine.Random.Range(0, avaliableflockUnitPrefabs.Length)];
 		for (int i = 0; i < flockSize; i++)
 		{
 			var randomVector = UnityEngine.Random.insideUnitSphere;
 			randomVector = new Vector3(randomVector.x * spawnBounds.x, randomVector.y * spawnBounds.y, randomVector.z * spawnBounds.z);
 			var spawnPosition = transform.position + randomVector;
 			var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
-			allUnits[i] = Instantiate(flockUnitPrefab, spawnPosition, rotation);
+			var prefab = avaliableflockUnitPrefabs[UnityEngine.Random.Range(0, avaliableflockUnitPrefabs.Length)];
+			if (i == 0)
+				flockUnitPrefab = prefab;
+			allUnits[i] = Instantiate(prefab, spawnPosition, rotation);
 			allUnits[i].myTransform.localScale = Vector3.one * UnityEngine.Random.Range(0.7f, 1.3f);
 			allUnits[i].AssignFlock(this);
 			allUnits[i].InitializeSpeed(UnityEngine.Random.Range(minSpeed, maxSpeed));
